@@ -1,0 +1,101 @@
+@model ProductUpdateDto
+@{
+    ViewData["Title"] = "Ürün Güncelle";
+}
+<div class="page-header">
+    <div class="w-100 d-flex align-items-center justify-content-between">
+        <h3 class="fw-bold mb-3">PhoneCase - ÜRÜN GÜNCELLEME</h3>
+    </div>
+</div>
+<form asp-area="Admin" asp-controller="Product" asp-action="Edit" method="post" enctype="multipart/form-data">
+<input type="hidden" name="OldImageUrl" value="@ViewBag.OldImageUrl">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="form-group">
+                    <label asp-for=Name></label>
+                    <input asp-for=Name class="form-control" placeholder="Ürünün adını yazınız...">
+                    <span class="text-danger" asp-validation-for=Name></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for=Price></label>
+                    <input asp-for=Price class="form-control" placeholder="Fiyatı yazınız...">
+                    <span class="text-danger" asp-validation-for=Price></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for=IsHome></label>
+                    <input asp-for=IsHome>
+                    <span class="text-danger" asp-validation-for=IsHome></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for=Properties></label>
+                    <textarea asp-for=Properties class="form-control"></textarea>
+                    <span class="text-danger" asp-validation-for=Properties></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="form-group">
+                    <label class="form-label">Kategoriler</label>
+
+                    <div class="selectgroup selectgroup-pills">
+                        @foreach (CategoryDto c in ViewBag.CategoryList)
+                        {
+                            <label class="selectgroup-item">
+                                @{
+                                    string isChecked = string.Empty;
+                                    if (Model!.CategoryIds is not null && Model!.CategoryIds.Any(x => x == c.Id))
+                                    {
+                                        isChecked = "checked";
+                                    }
+                                }
+                                <input type="checkbox" name="CategoryIds" value="@c.Id" class="selectgroup-input"
+                                    @isChecked />
+                                <span class="selectgroup-button">@c.Name</span>
+                            </label>
+                        }
+                    </div>
+                    <span class="text-danger" asp-validation-for=CategoryIds></span>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for=Image></label>
+                <input asp-for=Image class="form-control-file">
+                <span class="text-danger" asp-validation-for=Image></span>
+                <div>
+                    <img id="image-preview" style="max-height: 150px; object-fit: contain;" src="http://localhost:5289/images/@ViewBag.OldImageUrl" alt="">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Değişiklikleri Kaydet</button>
+    </div>
+</form>
+
+@section StylesSection {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/summernote-bs5.min.css">
+}
+
+@section ScriptsSection {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.9.1/summernote-bs5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#Properties").summernote({
+                height: "200"
+            });
+        });
+        document.getElementById("Image").addEventListener('change', function (e) {
+            let image = e.target.files[0];
+            if (image) {
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    document.getElementById('image-preview').src = event.target.result;
+                }
+                reader.readAsDataURL(image);
+                console.log(image);
+            }
+        })
+    </script>
+}

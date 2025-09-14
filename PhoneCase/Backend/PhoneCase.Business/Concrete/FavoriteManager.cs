@@ -31,39 +31,36 @@ public class FavoriteManager : IFavoriteService
         _mapper = mapper;
     }
 
-    public async Task<ResponseDto<FavoriteDto>> AddAsync(FavoriteCreateDto favoriteCreateDto)
+public async Task<ResponseDto<FavoriteDto>> AddAsync(FavoriteCreateDto favoriteCreateDto)
+{
+    try
     {
-        try
+        var isUserExists = await _userRepository.ExistsAsync(x => x.Id == favoriteCreateDto.UserId);
+        if (!isUserExists)
+            return ResponseDto<FavoriteDto>.Fail("Kullanıcı bulunamadı!", StatusCodes.Status404NotFound);
+        var product = await _productRepository.GetAsync(x => x.Id == favoriteCreateDto.ProductId);
+        if (product == null)
+            return ResponseDto<FavoriteDto>.Fail("Ürün bulunamadı!", StatusCodes.Status404NotFound);
+        var favorite = new Favorite
         {
-            var userIdStr = favoriteCreateDto.UserId.ToString();
-            var isUserExists = await _userRepository.ExistsAsync(x => x.Id == userIdStr);
-            if (!isUserExists)
-            {
-                return ResponseDto<FavoriteDto>.Fail("Kullanıcı bulunamadı!", StatusCodes.Status404NotFound);
-            }
-            var isProductExists = await _productRepository.ExistsAsync(x => x.Id == favoriteCreateDto.ProductId);
-            if (!isProductExists)
-            {
-                return ResponseDto<FavoriteDto>.Fail("Ürün bulunamadı!", StatusCodes.Status404NotFound);
-            }
-            var favorite = new Favorite
-            {
-                UserId = favoriteCreateDto.UserId,
-                ProductId = favoriteCreateDto.ProductId,
-                CreatedDate = favoriteCreateDto.CreatedDate
-            };
-
-            await _favoriteRepository.AddAsync(favorite);
-            await _unitOfWork.SaveAsync();
-            var result = _mapper.Map<FavoriteDto>(favorite);
-            return ResponseDto<FavoriteDto>.Success(result, StatusCodes.Status200OK);
-        }
+            UserId = favoriteCreateDto.UserId!,
+            ProductId = product.Id,
+            CreatedDate = DateTime.UtcNow,
+            UpdatedDate = DateTime.UtcNow,
+            ProductName = product.Name!,
+            Price = product.Price,
+            ImageUrl = product.ImageUrl!
+        };
+        await _favoriteRepository.AddAsync(favorite);
+        await _unitOfWork.SaveAsync();
+        var result = _mapper.Map<FavoriteDto>(favorite);
+        return ResponseDto<FavoriteDto>.Success(result, StatusCodes.Status200OK);
+    }
         catch (Exception ex)
         {
             return ResponseDto<FavoriteDto>.Fail($"Beklenmedik Hata:{ex.Message}", StatusCodes.Status500InternalServerError);
         }
-    }
-
+}
     public async Task<ResponseDto<NoContentDto>> DeleteAsync(int id)
     {
         try
@@ -84,53 +81,51 @@ public class FavoriteManager : IFavoriteService
     }
 
 
-
-    public async Task<ResponseDto<IEnumerable<FavoriteDto>>> GetAllAsync(int userId = 0, int productId = 0, bool includeUser = false, bool includeProduct = false, bool? isDeleted = null)
+public async Task<ResponseDto<IEnumerable<FavoriteDto>>> GetAllAsync(
+    string userId = null!,
+    int productId = 0,
+    bool includeUser = false,
+    bool includeProduct = false,
+    bool? isDeleted = null)
+{
+    try
     {
-        try
+        var includeList = new List<Func<IQueryable<Favorite>, IQueryable<Favorite>>>();
+        if (includeUser)
+            includeList.Add(q => q.Include(f => f.User));
+        if (includeProduct)
+            includeList.Add(q => q.Include(f => f.Product));
+        var favorites = await _favoriteRepository.GetAllAsync(
+            predicate: x =>
+                (string.IsNullOrEmpty(userId) || x.UserId == userId) &&
+                (productId == 0 || x.ProductId == productId) &&
+                (!isDeleted.HasValue || x.IsDeleted == isDeleted.Value),
+            includes: includeList.ToArray()
+        );
+
+        if (!favorites.Any())
+            return ResponseDto<IEnumerable<FavoriteDto>>.Fail(
+                "Favori bulunamadı!", StatusCodes.Status404NotFound);
+        var favoriteDtos = favorites.Select(f => new FavoriteDto
         {
-            Expression<Func<Favorite, bool>> predicate = x => true;
-            if (userId > 0)
-            {
-                predicate = x => x.UserId == userId;
-            }
-            if (productId > 0)
-            {
-                predicate = x => x.ProductId == productId;
-            }
-            if (isDeleted.HasValue)
-            {
-                predicate = x => x.IsDeleted == isDeleted.HasValue;
-            }
+            Id = f.Id,
+            UserId = f.UserId,
+            ProductId = f.ProductId,
+            CreatedDate = f.CreatedDate,
+            UpdatedDate = f.UpdatedDate,
+            ProductName = f.Product != null ? f.Product.Name! : f.ProductName,
+            Price = f.Product != null ? f.Product.Price : f.Price,
+            ImageUrl = f.Product != null ? f.Product.ImageUrl! : f.ImageUrl
+        }).ToList();
 
-            var includeList = new List<Func<IQueryable<Favorite>, IQueryable<Favorite>>>();
-            if (includeUser)
-            {
-                includeList.Add(query => query.Include(x => x.User));
-            }
-            if (includeProduct)
-            {
-                includeList.Add(query => query.Include(x => x.Product));
-            }
-
-            var favorites = await _favoriteRepository.GetAllAsync(
-                predicate: predicate,
-                includes: includeList.ToArray()
-            );
-
-            if (!favorites.Any())
-            {
-                return ResponseDto<IEnumerable<FavoriteDto>>.Fail("Favori bulunamadı!", StatusCodes.Status404NotFound);
-            }
-
-            var favoriteDtos = _mapper.Map<IEnumerable<FavoriteDto>>(favorites);
-            return ResponseDto<IEnumerable<FavoriteDto>>.Success(favoriteDtos, StatusCodes.Status200OK);
-        }
+        return ResponseDto<IEnumerable<FavoriteDto>>.Success(favoriteDtos, StatusCodes.Status200OK);
+    }
         catch (Exception ex)
         {
             return ResponseDto<IEnumerable<FavoriteDto>>.Fail($"Beklenmedik Hata:{ex.Message}", StatusCodes.Status500InternalServerError);
         }
-    }
+}
+
 
     public async Task<ResponseDto<FavoriteDto>> GetByIdAsync(int id)
     {
@@ -185,7 +180,7 @@ public class FavoriteManager : IFavoriteService
             {
                 return ResponseDto<FavoriteDto>.Fail("Favori bulunamadı!", StatusCodes.Status404NotFound);
             }
-            if (favorite.UserId == 0)
+            if (favorite.UserId is null)
             {
                 return ResponseDto<FavoriteDto>.Fail("Favoriye ait kullanıcı bulunamadı!", StatusCodes.Status404NotFound);
             }

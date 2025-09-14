@@ -2,11 +2,12 @@ using System;
 using System.Linq.Expressions;
 using PhoneCase.Entities.Abstract;
 using PhoneCase.Entities.Concrete;
-using PhoneCase.Shared.Dtos.FavoriteDtos;
 
 namespace PhoneCase.Data.Abstract;
 
-public interface IGenericRepository<TEntity> where TEntity:class,IEntity
+public interface IGenericRepository<TEntity>
+    where TEntity : class, IEntity
+
 {
     Task<TEntity> GetAsync(
         Expression<Func<TEntity, bool>> predicate,
@@ -17,7 +18,7 @@ public interface IGenericRepository<TEntity> where TEntity:class,IEntity
         Expression<Func<TEntity, bool>>? predicate = null,
         int? top = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
-        bool ? isDeleted = null,
+        bool ? includeDeleted = false,
         params Func<IQueryable<TEntity>, IQueryable<TEntity>>[] includes
     );
     Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate);
@@ -29,5 +30,6 @@ public interface IGenericRepository<TEntity> where TEntity:class,IEntity
     Task<TEntity> AddAsync(TEntity entity);
     void Update(TEntity entity);
     void BulkUpdate(IEnumerable<TEntity> entities);
+    void BulkUDelete(IEnumerable<TEntity> entities);
     void Delete(TEntity entity);
 }

@@ -1,0 +1,104 @@
+@model List<PhoneCase.Shared.Dtos.ProductDtos.ProductDto>
+
+@{
+    bool isHomePage = ViewData["ShowFeatured"] != null && (bool)ViewData["ShowFeatured"]!;
+}
+
+@if (isHomePage)
+{
+    <!-- Ana Sayfa Ürünleri -->
+    <section class="home_product_slider section_padding mt-5">
+        <div class="container">
+            <h2 class="text-center" style="color:black;">Ana Sayfa Ürünleri</h2>
+            <div class="slider_wrapper position-relative">
+                <div class="home_slider owl-carousel">
+                    @foreach (var p in Model.Where(p => p.IsHome))
+                    {
+                        <div class="single_product_slider text-center">
+                            <img src="http://localhost:5289/images/@p.ImageUrl" 
+                                 style="width:250px;height:250px;object-fit:cover;margin:auto;" />
+                            <h2 style="font-size:18px;">@p.Name</h2>
+                            <p style="font-size:16px;font-weight:bold;">@($"{p.Price:C0}")</p>
+
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                                <!-- Sepete Ekle -->
+                                <button type="button" class="btn-custom btn-sm">Sepete Ekle</button>
+<form asp-area="" asp-controller="Product" asp-action="Details" asp-route-id="@p.Id.ToString()" method="get" style="display:inline;">
+    <button type="submit" class="btn-custom btn-sm">Detay</button>
+</form>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tüm Ürünler Slider -->
+    <section class="all_product_slider section_padding mt-5">
+        <div class="container">
+            <h2 class="text-center" style="color:black;">
+                <a href="~/Product" style="color:black;text-decoration:none;">Tüm Ürünler</a>
+            </h2>
+            <div class="slider_wrapper position-relative">
+                <div class="all_slider owl-carousel">
+                    @foreach (var p in Model)
+                    {
+                        <div class="single_product_slider text-center">
+                            <img src="http://localhost:5289/images/@p.ImageUrl"
+                                 style="width:262.5px;height:262.5px;object-fit:cover;margin:auto;" />
+                            <h2 style="font-size:18px;">@p.Name</h2>
+                            <p style="font-size:16px;font-weight:bold;">@($"{p.Price:C0}")</p>
+
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                                <!-- Sepete Ekle -->
+                                <button type="button" class="btn-custom btn-sm">Sepete Ekle</button>
+<!-- Detay butonu -->
+<form asp-area="" asp-controller="Product" asp-action="Details" asp-route-id="@p.Id.ToString()" method="get" style="display:inline;">
+    <button type="submit" class="btn-custom btn-sm">Detay</button>
+</form>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <!-- Tüm Ürünler Liste -->
+    <section class="all_product_list section_padding mt-5">
+        <div class="container">
+            <div class="text-center mb-4" style="height:200px;">
+                <h2>
+                    <a href="~/Product" style="color:black;text-decoration:none;">Tüm Ürünler</a>
+                </h2>
+            </div>
+            <div class="row">
+                @foreach (var p in Model)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4 text-center">
+                        <img src="http://localhost:5289/images/@p.ImageUrl"
+                             style="width:100%;height:262.5px;object-fit:cover;margin:auto;" />
+                        <h2 style="font-size:18px;">@p.Name</h2>
+                        <p style="font-size:16px;font-weight:bold;">@($"{p.Price:C0}")</p>
+
+      <div class="d-flex justify-content-center align-items-center gap-2">
+    <!-- Sepete Ekle -->
+    <button type="button" class="btn-custom btn-sm">Sepete Ekle</button>
+
+    <!-- Detay -->
+    <form asp-area="" asp-controller="Product" asp-action="Details" asp-route-id="@p.Id.ToString()" method="get" style="display:inline;">
+        <button type="submit" class="btn-custom btn-sm">Detay</button>
+    </form>
+</div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

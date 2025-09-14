@@ -2,7 +2,7 @@ using System;
 
 namespace PhoneCase.Entities.Abstract;
 
-public abstract class BaseEntity
+public abstract class BaseEntity:ISoftDeletable,IEntity
 {
     public int Id { get; set; }
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;

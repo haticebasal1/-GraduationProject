@@ -1,5 +1,6 @@
 using System;
 using PhoneCase.Shared.Dtos.CategoryDtos;
+using PhoneCase.Shared.Enums;
 
 namespace PhoneCase.Shared.Dtos.ProductDtos;
 
@@ -16,4 +17,5 @@ public class ProductDto
     public string? ImageUrl { get; set; }
     public bool IsHome { get; set; }
     public ICollection<CategoryDto> Categories { get; set; } = [];
+    public CategoryType Type { get; set; }
 }

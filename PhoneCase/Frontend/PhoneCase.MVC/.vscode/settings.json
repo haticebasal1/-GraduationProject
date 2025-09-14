@@ -1,0 +1,12 @@
+{
+    "editor.parameterHints.enabled": false,
+    "omnisharp.enableEditorConfigSupport": false,
+    "omnisharp.autoStart": false,
+    "csharp.showOmnisharpLogOnError": false,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.suggest.insertMode": "replace",
+    "dotnet.completion.showNameSuggestions": false,
+    "editor.tabCompletion": "on",
+    "debug.console.acceptSuggestionOnEnter": "on",
+    "csharp.completion.showNamedParameters": false
+}

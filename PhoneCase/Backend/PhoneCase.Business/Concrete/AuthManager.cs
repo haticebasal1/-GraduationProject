@@ -11,6 +11,7 @@ using PhoneCase.Entities.Concrete;
 using PhoneCase.Shared.Configurations.Auth;
 using PhoneCase.Shared.Dtos.AuthDtos;
 using PhoneCase.Shared.Dtos.ResponseDtos;
+using PhoneCase.Shared.Enums;
 
 namespace PhoneCase.Business.Concrete;
 
@@ -50,9 +51,57 @@ public class AuthManager : IAuthService
         }
     }
 
-    public Task<ResponseDto<UserDto>> RegisterAsync(RegisterDto registerDto)
+    public async Task<ResponseDto<UserDto>> RegisterAsync(RegisterDto registerDto)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var existingUser = await _userManager.FindByNameAsync(registerDto.UserName!);
+            if (existingUser is not null)
+            {
+                return ResponseDto<UserDto>.Fail("Bu kullanıcı mevcut!", StatusCodes.Status400BadRequest);
+            }
+            existingUser = await _userManager.FindByEmailAsync(registerDto.Email!);
+            if (existingUser is not null)
+            {
+                return ResponseDto<UserDto>.Fail("Bu email kullanılıyor!", StatusCodes.Status400BadRequest);
+            }
+            var user = new User(registerDto.FirstName, registerDto.LastName, "Address", "City", Gender.None)
+            {
+                Email = registerDto.Email,
+                UserName = registerDto.UserName,
+                EmailConfirmed = true,
+                RegistrationDate = DateTime.UtcNow
+            };
+            var result = await _userManager.CreateAsync(user, registerDto.Password!);
+            if (!result.Succeeded)
+            {
+                return ResponseDto<UserDto>.Fail(result.Errors.Select(x => x.Description).ToList(), StatusCodes.Status500InternalServerError);
+            }
+            result = await _userManager.AddToRoleAsync(user, "User");
+            if (!result.Succeeded)
+            {
+                return ResponseDto<UserDto>.Fail(result.Errors.Select(x => x.Description).ToList(), StatusCodes.Status500InternalServerError);
+            }
+            var userDto = new UserDto
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                Email = user.Email,
+                Address = user.Address,
+                City = user.City,
+                BirthDate = user.BirthDate,
+                EmailConfirmed = user.EmailConfirmed,
+                Gender = user.Gender,
+                RegistrationDate = user.RegistrationDate
+            };
+            return ResponseDto<UserDto>.Success(userDto, StatusCodes.Status201Created);
+        }
+        catch (Exception ex)
+        {
+            return ResponseDto<UserDto>.Fail($"Beklenmedik Hata:{ex.Message}", StatusCodes.Status500InternalServerError);
+        }
     }
 
     private async Task<ResponseDto<TokenDto>> GenerateTokenAsync(User user)

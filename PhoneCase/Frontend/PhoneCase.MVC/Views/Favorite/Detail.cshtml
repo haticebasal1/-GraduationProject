@@ -1,0 +1,17 @@
+@model PhoneCase.Shared.Dtos.ProductDtos.ProductDto
+@{
+    ViewData["Title"] = "Detail";
+}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/ui/img/@Model.ImageUrl" class="img-fluid rounded shadow" alt="@Model.Name" />
+        </div>
+        <div class="col-md-6">
+            <h2>@Model.Name</h2>
+            <p class="text-muted">@Model.Categories</p>
+            <p class="fw-bold text-primary">@Model.Price ₺</p>
+            <p>@Model.Properties</p>
+        </div>
+    </div>
+</div>

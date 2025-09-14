@@ -2,6 +2,7 @@ using System;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using PhoneCase.Data.Concreate.Configs;
 using PhoneCase.Entities.Concrete;
 using PhoneCase.Shared.Enums;
@@ -12,7 +13,6 @@ public class AppDbContext : IdentityDbContext<User>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
-
     }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Product> Products { get; set; }
@@ -95,6 +95,10 @@ public class AppDbContext : IdentityDbContext<User>
             new Cart(adminMember.Id) { Id = 1 },
             new Cart(userMember.Id) { Id = 2 }
         );
+
+        #region Orders
+        builder.Entity<Order>().HasQueryFilter(x => !x.IsDeleted);
+        #endregion
         #endregion
         base.OnModelCreating(builder);
     }

@@ -1,0 +1,58 @@
+@model LoginDto
+@{
+    ViewData["Title"] = "Login";
+}
+<section class="login_box_area section_gap mt-5">
+    <div class="container">
+        <div class="row">
+            <!-- Fotoğraf kısmı -->
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                <div class="login_box_img text-center">
+                    <div class="text-center p-3 shadow rounded bg-light" style="margin-top:150px;">
+                        <img src="~/ui/img/logingiris.jpg" alt="Login" class="img-fluid rounded" style="max: width 100px;%;">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Giriş formu -->
+            <div class="col-lg-6 d-flex align-items-center">
+                <div class="login_form_inner w-100 p-5 shadow rounded bg-white mx-auto" style="max-width:500px; padding:40px; margin-top:150px;">
+                    <h3 class="mb-4">Giriş Yap</h3>
+                    <form asp-area="" asp-controller="Auth" asp-action="Login" method="post" class="login_form">
+                        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl">
+
+                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <input class="form-control" asp-for=UserNameOrEmail placeholder="Kullanıcı adı ya da email" />
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <input class="form-control" asp-for=Password type="password" placeholder="Parola"/>
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-gradient px-4 py-2 rounded-pill shadow">Giriş
+                                Yap</button>
+                            <a href="#"
+                                style="margin-left:70px; margin-top:13px; display:inline-block; color: #000;">Şifremi
+                                Unuttum?</a>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <p><strong>Hesabınız yok mu?</strong></p>
+                        <a asp-area="" asp-controller="Auth" asp-action="Register"
+                            class="btn btn-gradient px-4 py-2 rounded-pill shadow">
+                            Kayıt Ol
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

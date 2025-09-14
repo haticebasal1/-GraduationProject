@@ -1,0 +1,5 @@
+@model List<PhoneCase.MVC.Controllers.ProductController>
+@{
+    ViewData["ShowFeatured"] = false;
+}
+@await Component.InvokeAsync("Products",ViewBag.CategoryId)

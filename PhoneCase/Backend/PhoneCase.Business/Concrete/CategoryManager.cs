@@ -20,13 +20,15 @@ public class CategoryManager : ICategoryService
     private readonly IGenericRepository<ProductCategory> _productCategoryRepository;
     private readonly IMapper _mapper;
     private readonly IImageService _imageManager;
-    public CategoryManager(IUnitOfWork unitOfWork, IMapper mapper, IImageService imageManager)
+    private readonly IHttpContextAccessor _httpContextAccessor;
+    public CategoryManager(IUnitOfWork unitOfWork, IMapper mapper, IImageService imageManager, IHttpContextAccessor httpContextAccessor)
     {
         _unitOfWork = unitOfWork;
         _categoryRepository = _unitOfWork.GetRepository<Category>();
         _productCategoryRepository = _unitOfWork.GetRepository<ProductCategory>();
         _mapper = mapper;
         _imageManager = imageManager;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public async Task<ResponseDto<CategoryDto>> AddAsync(CategoryCreateDto categoryCreateDto)
@@ -38,6 +40,7 @@ public class CategoryManager : ICategoryService
             {
                 return ResponseDto<CategoryDto>.Fail("Bu isimde bir kategori mevcut olduğu için işlem başarısız oldu!", StatusCodes.Status400BadRequest);
             }
+
             var category = _mapper.Map<Category>(categoryCreateDto);
 
             if (categoryCreateDto.Type == null)
@@ -49,26 +52,32 @@ public class CategoryManager : ICategoryService
             {
                 return ResponseDto<CategoryDto>.Fail("Resim gönderilmediği için işlem tamamlanamadı!", StatusCodes.Status400BadRequest);
             }
+
+            // Resmi kaydet
             var imageUploadResult = await _imageManager.UploadAsync(categoryCreateDto.Image, "categories");
             if (!imageUploadResult.IsSuccessful)
             {
                 return ResponseDto<CategoryDto>.Fail(imageUploadResult.Errors, imageUploadResult.StatusCode);
             }
-            category.ImageUrl = imageUploadResult.Data;
+
+            // URL tam olarak oluşturuluyor
+            var baseUrl = $"{_httpContextAccessor.HttpContext!.Request.Scheme}://{_httpContextAccessor.HttpContext.Request.Host}";
+            category.ImageUrl = $"{baseUrl}/{imageUploadResult.Data.TrimStart('/')}";
 
             await _categoryRepository.AddAsync(category);
             var result = await _unitOfWork.SaveAsync();
+
             if (result < 1)
             {
                 return ResponseDto<CategoryDto>.Fail("Beklenmedik bir hata oluştu!", StatusCodes.Status500InternalServerError);
             }
+
             var categoryDto = _mapper.Map<CategoryDto>(category);
             return ResponseDto<CategoryDto>.Success(categoryDto, StatusCodes.Status200OK);
         }
         catch (Exception ex)
         {
-
-            return ResponseDto<CategoryDto>.Fail($"Beklenmedik Hata:{ex.Message}", StatusCodes.Status500InternalServerError);
+            return ResponseDto<CategoryDto>.Fail($"Beklenmedik Hata: {ex.Message}", StatusCodes.Status500InternalServerError);
         }
     }
 
@@ -98,28 +107,29 @@ public class CategoryManager : ICategoryService
     {
         try
         {
-            var myIncludeDeleted = isDeleted != false;
             Expression<Func<Category, bool>> myPredicate = x => true;
+
             if (isDeleted.HasValue)
             {
                 myPredicate = x => x.IsDeleted == isDeleted.Value;
             }
+
             var categories = await _categoryRepository.GetAllAsync(
                 predicate: myPredicate,
-                isDeleted: isDeleted
+                includeDeleted: isDeleted
             );
-            if (!categories.Any())
-            {
-                return ResponseDto<IEnumerable<CategoryDto>>.Fail("Hiç kategori bilgisi bulunamadı!", StatusCodes.Status404NotFound);
-            }
+
             var categoryDtos = _mapper.Map<IEnumerable<CategoryDto>>(categories);
+
+            // Burada boş olsa bile success dönüyoruz
             return ResponseDto<IEnumerable<CategoryDto>>.Success(categoryDtos, StatusCodes.Status200OK);
         }
         catch (Exception ex)
         {
-            return ResponseDto<IEnumerable<CategoryDto>>.Fail($"Beklenmedik Hata:{ex.Message}", StatusCodes.Status500InternalServerError);
+            return ResponseDto<IEnumerable<CategoryDto>>.Fail($"Beklenmedik Hata: {ex.Message}", StatusCodes.Status500InternalServerError);
         }
     }
+
     public async Task<ResponseDto<CategoryDto>> GetAsync(int id)
     {
         try

@@ -1,0 +1,67 @@
+@model CategoryUpdateDto
+@{
+    ViewData["Title"] = "Kategori Güncelleme";
+}
+
+<div class="page-header">
+    <div class="w-100 d-flex align-items-center justify-content-between">
+        <h3 class="fw-bold mb-3">PhoneCase-KATEGORİ GÜNCELLEME</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-area="Admin" asp-controller="Category" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="OldImageUrl" value="@ViewBag.OldImageUrl">
+            <div class="card">
+                <div class="form-group">
+                    <label asp-for=Name></label>
+                    <input asp-for=Name class="form-control" placeholder="Kategori adını yazınız...">
+                    <span class="text-danger" asp-validation-for=Name></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for=Description></label>
+                    <textarea asp-for=Description class="form-control" rows="5"
+                        placeholder="Kategori açıklamasını yazınız..."></textarea>
+                    <span class="text-danger" asp-validation-for=Description></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image"></label>
+                    <input asp-for="Image" type="file" class="form-control-file" />
+                    <span class="text-danger" asp-validation-for="Image"></span>
+
+                    <div class="mt-2">
+                        <img src="@ViewBag.OldImageUrl" id="image-preview"
+                            style="max-height:150px; object-fit:contain;" />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="Type">Kategori Tipi</label>
+                        <select asp-for="Type" class="form-control"
+                            asp-items="@(ViewBag.CategoryTypes as List<SelectListItem>)">
+                            <option value="">Seçiniz</option>
+                        </select>
+                        <span class="text-danger" asp-validation-for="Type"></span>
+                    </div>
+
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-success">Değişiklikleri Kaydet</button>
+        </form>
+    </div>
+</div>
+
+@section ScriptsSection {
+    <script>
+        document.getElementById("Image").addEventListener('change', function (e) {
+            let image = e.target.files[0];
+            if (image) {
+                let reader = new FileReader();
+                reader.onload = function (event) {
+                    document.getElementById('image-preview').src = event.target.result;
+                }
+                reader.readAsDataURL(image);
+                console.log(image);
+            }
+        })
+    </script>
+}

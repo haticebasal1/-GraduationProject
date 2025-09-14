@@ -1,0 +1,26 @@
+@model ProductDto
+@{
+    ViewData["Title"] = "Trash";
+}
+
+<div class="page-header">
+    <div class="w-100 d-flex align-items-center justify-content-between">
+        <h3 class="fw-bold mb-3">PhoneCase- ÜRÜN SİL</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+          
+          <h1>@Model.Name</h1>
+          <img src="@($"http://localhost:5289/images/{Model.ImageUrl}")" style="max-height: 200px;" class="img-fluid"/>
+          <h2>@Model.CreatedAt</h2>
+          <form asp-area="Admin" asp-controller="Product" asp-action="Trash" asp-route-id="@Model.Id" 
+          asp-route-issoft="@true" method="post">
+            <button type="submit" class="btn btn-info btn-sm">Çöp Kutusuna Gönder</button>
+          </form>
+          <form asp-area="Admin" asp-controller="Product" asp-action="Trash" asp-route-id="@Model.Id" 
+          asp-route-issoft="@false" method="post"> 
+            <button type="submit" class="btn btn-danger btn-sm">Kalıcı Olarak Sil</button>
+            </form>
+    </div>
+</div>

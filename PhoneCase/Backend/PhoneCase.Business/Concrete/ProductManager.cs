@@ -172,7 +172,7 @@ public class ProductManager : IProductService
         {
             var products = await _productRepository.GetAllAsync(
                 predicate: x => x.IsDeleted,
-                isDeleted: true
+                includeDeleted: true
             );
             if (!products.Any())
             {

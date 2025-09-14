@@ -16,5 +16,5 @@ public class ProductCreateDto
     public IFormFile Image { get; set; } = null!;
     public bool IsHome { get; set; }
     [Required(ErrorMessage ="En az bir kategori seçilmelidir!")]
-    public ICollection<int> CategoryIds { get; set; } = [];
+    public ICollection<int> CategoryIds { get; set; } = null!;
 }

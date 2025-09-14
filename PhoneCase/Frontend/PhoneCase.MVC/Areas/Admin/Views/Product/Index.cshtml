@@ -1,0 +1,106 @@
+@model List<ProductDto>
+@{
+    ViewData["Title"] = "Ürünler";
+}
+
+<div class="page-header">
+    <div class="w-100 d-flex align-items-center justify-content-between">
+        <h3 id="head_title" class="fw-bold mb-3">PhoneCase - @(ViewBag.ShowDeleted == true ? "SİLİNMİŞ" : "") ÜRÜNLER</h3>
+        @if(ViewBag.ShowDeleted==true)
+        {
+            <a asp-area="Admin" asp-controller="Product" asp-action="Index" asp-route-isdeleted=@false class="btn btn-primary">Tüm Ürünlere Dön</a>
+        }
+        else{
+             <a asp-area="Admin" asp-controller="Product" asp-action="Create" class="btn btn-success">Yeni Ürün</a>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                @if(Model is not null)
+                {
+                <div class="table-responsive">
+                    <table id="entity-tables" class="display table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th width="30">Id</th>
+                                <th width="50">Resim</th>
+                                <th>Ürün</th>
+                                <th width="50">Fiyat</th>
+                                @if (ViewBag.ShowDeleted == false){
+                                    <th width="50">Ana Sayfa</th>
+                                }
+                                <th width="175">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (ProductDto p in Model)
+                            {
+                                <tr>
+                                    <td>@p.Id</td>
+                                    <td>
+                                        <img class="img-fluid" style="max-width: 50px;"
+                                            src="@($"http://localhost:5289/images/{p.ImageUrl}")">
+                                    </td>
+                                    <td>@p.Name</td>
+                                    <td>@($"{p.Price:C0}")</td>
+                                    @if(ViewBag.ShowDeleted==false)
+                                    {
+                                        <td>
+                                            <form id="update-is-home-form_@p.Id" asp-area="Admin" asp-controller="Product" asp-action="UpdateIsHome" method="post">
+                                                <input type="hidden" name="Id" value="@p.Id" />
+                                                <input onchange="document.getElementById('update-is-home-form_@p.Id').submit();" type="checkbox" asp-for="@p.IsHome">
+                                                
+                                            </form>
+                                            <p class="btn btn-success" onclick="document.getElementById('head_title').style.color = 'red';">Tıkla</p>
+                                        </td>
+                                    }
+
+                                    <td>
+                                        @if(ViewBag.ShowDeleted==false)
+                                        {
+                                            <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-id="@p.Id"
+                                                class="btn btn-warning btn-sm">Güncelle</a>
+                                            <a asp-area="Admin" asp-controller="Product" asp-action="Trash" asp-route-id="@p.Id"
+                                            class="btn btn-danger btn-sm">Sil</a>
+                                        }else{
+                                            <form asp-area="Admin" asp-controller="Product" asp-action="Trash" asp-route-id="@p.Id"
+                                                asp-route-issoft="@true">
+                                                <button type="submit" class="btn btn-info btn-sm">Geri Al</button>
+                                            </form>
+                                            <form asp-area="Admin" asp-controller="Product" asp-action="Trash"
+                                                asp-route-id="@p.Id" asp-route-issoft="@false">
+                                                <button type="submit" class="btn btn-danger btn-sm">Kalıcı Olarak Sil</button>
+                                            </form>
+                                        }
+
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                }
+                else{
+                    <div class="alert alert-warning mb-0">
+                        Hiç kategori bulunamadı!
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div >
+
+</div>
+@section ScriptsSection {
+
+    @await Html.PartialAsync("_DatatablesPartial")
+}

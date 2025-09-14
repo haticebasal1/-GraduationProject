@@ -214,7 +214,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 818, DateTimeKind.Unspecified).AddTicks(1560), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 725, DateTimeKind.Unspecified).AddTicks(3530), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             UpdatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
@@ -223,7 +223,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 818, DateTimeKind.Unspecified).AddTicks(1570), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 725, DateTimeKind.Unspecified).AddTicks(3530), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             IsDeleted = false,
                             UpdatedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
@@ -313,7 +313,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(2280), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(1920), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Esnek ve darbe emici silikon telefon kılıfları",
                             ImageUrl = "categories/silikon.png",
@@ -325,7 +325,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(2280), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(1920), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Şık ve profesyonel görünümlü hakiki ve suni deri kılıflar",
                             ImageUrl = "categories/deri.png",
@@ -337,7 +337,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(2280), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(1930), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Telefonun orijinal tasarımını gösteren şeffaf koruma kılıfları",
                             ImageUrl = "categories/seffaf.png",
@@ -349,7 +349,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(2280), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(1930), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Kart ve nakit bölmeli, çok fonksiyonlu telefon kılıfları",
                             ImageUrl = "categories/cuzdanli.png",
@@ -361,7 +361,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(2280), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(1930), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Telefonun hem önünü hem arkasını kaplayan tam koruma sağlayan kılıflar",
                             ImageUrl = "categories/tam-koruma.png",
@@ -373,7 +373,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(2280), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(1930), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Kişiye özel ve çeşitli desenlere sahip kılıflar",
                             ImageUrl = "categories/desenli.png",
@@ -385,7 +385,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(2280), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(1930), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Polikarbonat gibi sert malzemelerden yapılmış, çizilmelere karşı dayanıklı kılıflar",
                             ImageUrl = "categories/sert-kapak.png",
@@ -397,7 +397,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(2290), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(1930), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Dahili bataryası ile telefonunuzu şarj edebilen kılıflar",
                             ImageUrl = "categories/bataryali.png",
@@ -409,7 +409,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(2290), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(1930), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Boyuna veya omuza asmak için askı aparatlı telefon kılıfları",
                             ImageUrl = "categories/askili.png",
@@ -421,7 +421,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(2290), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(1930), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             Description = "Su altı kullanımı ve sıvı temaslarına karşı koruma sağlayan özel kılıflar",
                             ImageUrl = "categories/su-gecirmez.png",
@@ -449,26 +449,37 @@ namespace PhoneCase.Data.Migrations
                     b.Property<DateTimeOffset>("DeletedAt")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTimeOffset>("UpdatedAt")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Favorites");
                 });
@@ -600,7 +611,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5140), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4440), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone15-silikon-siyah.png",
                             IsDeleted = false,
@@ -613,7 +624,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5140), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4440), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/s24-silikon-mavi.png",
                             IsDeleted = false,
@@ -626,7 +637,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5150), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4440), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/pixel8pro-silikon-lacivert.png",
                             IsDeleted = true,
@@ -639,7 +650,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5150), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4440), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/xiaomi13t-silikon-yesil.png",
                             IsDeleted = false,
@@ -652,7 +663,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5150), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4450), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone14pro-silikon-mor.png",
                             IsDeleted = false,
@@ -665,7 +676,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5150), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4450), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone15pro-deri-taba.png",
                             IsDeleted = true,
@@ -678,7 +689,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5150), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4450), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/s24ultra-deri-siyah.png",
                             IsDeleted = false,
@@ -691,7 +702,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5150), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4450), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone15-deri-kahve.png",
                             IsDeleted = false,
@@ -704,7 +715,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5150), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4450), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/pixel8-deri-bordo.png",
                             IsDeleted = false,
@@ -717,7 +728,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5150), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4450), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/xiaomi14pro-deri-mavi.png",
                             IsDeleted = false,
@@ -730,7 +741,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 11,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5150), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4450), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone15-seffaf.png",
                             IsDeleted = false,
@@ -743,7 +754,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 12,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5150), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4460), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/s23fe-seffaf.png",
                             IsDeleted = false,
@@ -756,7 +767,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 13,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5160), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4460), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/xiaomi13lite-seffaf.png",
                             IsDeleted = false,
@@ -769,7 +780,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 14,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5160), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4460), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone13-seffaf-standli.png",
                             IsDeleted = false,
@@ -782,7 +793,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 15,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5160), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4460), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/samsung-a54-seffaf-magsafe.png",
                             IsDeleted = false,
@@ -795,7 +806,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 16,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5160), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4460), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone15promax-cuzdanli.png",
                             IsDeleted = true,
@@ -808,7 +819,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 17,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5160), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4460), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/s24-cuzdanli.png",
                             IsDeleted = false,
@@ -821,7 +832,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 18,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5160), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4460), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone14-cuzdanli-ayrilabilir.png",
                             IsDeleted = false,
@@ -834,7 +845,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 19,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5160), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4460), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/xiaomi13tpro-cuzdanli.png",
                             IsDeleted = false,
@@ -847,7 +858,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 20,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5160), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4460), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/s23-cuzdanli-mor.png",
                             IsDeleted = false,
@@ -860,7 +871,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 21,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5160), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4460), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone15-360.png",
                             IsDeleted = true,
@@ -873,7 +884,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 22,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5160), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4460), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/s24ultra-360-askeri.png",
                             IsDeleted = false,
@@ -886,7 +897,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 23,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5160), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4460), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/xiaomi14-360-seffaf.png",
                             IsDeleted = false,
@@ -899,7 +910,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 24,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5170), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4470), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone14pro-360-mavi.png",
                             IsDeleted = false,
@@ -912,7 +923,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 25,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5170), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4470), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/pixel7pro-360-zirhli.png",
                             IsDeleted = false,
@@ -925,7 +936,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 26,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5170), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4470), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone14-desenli-mermer.png",
                             IsDeleted = false,
@@ -938,7 +949,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 27,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5170), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4470), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/samsung-a54-desenli-cicek.png",
                             IsDeleted = false,
@@ -951,7 +962,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 28,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5170), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4470), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/xiaomi13-desenli-geometrik.png",
                             IsDeleted = false,
@@ -964,7 +975,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 29,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5170), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4470), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone15promax-desenli-galaksi.png",
                             IsDeleted = false,
@@ -977,7 +988,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 30,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5170), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4470), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/s23ultra-desenli-kamuflaj.png",
                             IsDeleted = false,
@@ -990,7 +1001,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 31,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5170), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4470), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone15pro-sertkapak-siyah.png",
                             IsDeleted = false,
@@ -1003,7 +1014,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 32,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5170), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4470), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/s24-sertkapak-kumas.png",
                             IsDeleted = false,
@@ -1016,7 +1027,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 33,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5170), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4470), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/xiaomi14-sertkapak-mat.png",
                             IsDeleted = false,
@@ -1029,7 +1040,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 34,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5170), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4470), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/pixel8-sertkapak-karbon.png",
                             IsDeleted = true,
@@ -1042,7 +1053,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 35,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5180), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4470), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone13-sertkapak-kirmizi.png",
                             IsDeleted = false,
@@ -1055,7 +1066,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 36,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5180), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4470), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone15pro-bataryali.png",
                             IsDeleted = false,
@@ -1068,7 +1079,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 37,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5180), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4480), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/s24ultra-bataryali.png",
                             IsDeleted = false,
@@ -1081,7 +1092,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 38,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5180), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4480), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone14-bataryali-ince.png",
                             IsDeleted = false,
@@ -1094,7 +1105,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 39,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5180), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4480), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/pixel8pro-bataryali.png",
                             IsDeleted = false,
@@ -1107,7 +1118,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 40,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5180), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4480), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone15plus-bataryali-magsafe.png",
                             IsDeleted = false,
@@ -1120,7 +1131,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 41,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5180), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4480), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone15-askili-orgu.png",
                             IsDeleted = false,
@@ -1133,7 +1144,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 42,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5200), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4480), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/samsung-a54-askili-deri.png",
                             IsDeleted = false,
@@ -1146,7 +1157,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 43,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5200), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4480), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/xiaomi13lite-askili-pembe.png",
                             IsDeleted = false,
@@ -1159,7 +1170,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 44,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5200), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4480), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone14pro-askili-zincir.png",
                             IsDeleted = false,
@@ -1172,7 +1183,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 45,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5200), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4480), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/s23-askili-boncuk.png",
                             IsDeleted = false,
@@ -1185,7 +1196,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 46,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5200), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4480), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone15pro-sugecirmez.png",
                             IsDeleted = true,
@@ -1198,7 +1209,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 47,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5200), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4480), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/s24ultra-sugecirmez.png",
                             IsDeleted = false,
@@ -1211,7 +1222,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 48,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5210), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4490), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/evrensel-sugecirmez.png",
                             IsDeleted = false,
@@ -1224,7 +1235,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 49,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5210), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4490), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/iphone14-sugecirmez.png",
                             IsDeleted = false,
@@ -1237,7 +1248,7 @@ namespace PhoneCase.Data.Migrations
                         new
                         {
                             Id = 50,
-                            CreatedAt = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5210), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4490), new TimeSpan(0, 0, 0, 0, 0)),
                             DeletedAt = new DateTimeOffset(new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             ImageUrl = "products/xiaomi14pro-sugecirmez-samandira.png",
                             IsDeleted = false,
@@ -1748,7 +1759,7 @@ namespace PhoneCase.Data.Migrations
                             AccessFailedCount = 0,
                             Address = "Bakırköy",
                             City = "İstanbul",
-                            ConcurrencyStamp = "567867e2-26e2-4fc4-990b-71b36dcdfb08",
+                            ConcurrencyStamp = "5009e8df-f86d-44b9-85b0-455cd2902253",
                             Email = "testadmin@example.com",
                             EmailConfirmed = true,
                             FirstName = "Defne",
@@ -1757,10 +1768,10 @@ namespace PhoneCase.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TESTADMIN@EXAMPLE.COM",
                             NormalizedUserName = "TESTADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJu9pBrMwxELW3Xv3x2VTz99X8FjUZFGB0UpahKtwpsVkSkc69tB+VLPn1qNQXrQQg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOvcHZ9MO2K1v/G4NeppuAeiZ8DkcWAFVMRjmt78+wFmAmDZYeJ/T0WA7UxbAjn6SA==",
                             PhoneNumberConfirmed = false,
-                            RegistrationDate = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 735, DateTimeKind.Unspecified).AddTicks(5290), new TimeSpan(0, 0, 0, 0, 0)),
-                            SecurityStamp = "66a49e7c-b2d5-4ea4-948d-dd4751a617c9",
+                            RegistrationDate = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 654, DateTimeKind.Unspecified).AddTicks(4590), new TimeSpan(0, 0, 0, 0, 0)),
+                            SecurityStamp = "d6a4d100-6ad2-40cd-8d95-f6be5fd439c0",
                             TwoFactorEnabled = false,
                             UserName = "testadmin"
                         },
@@ -1770,7 +1781,7 @@ namespace PhoneCase.Data.Migrations
                             AccessFailedCount = 0,
                             Address = "Ataköy",
                             City = "İstanbul",
-                            ConcurrencyStamp = "5082d75e-af93-4685-b515-7195012f50db",
+                            ConcurrencyStamp = "da12aa8f-3dfb-4966-aefe-3a5533d4810a",
                             Email = "testuser@example.com",
                             EmailConfirmed = true,
                             FirstName = "Alp",
@@ -1779,10 +1790,10 @@ namespace PhoneCase.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "TESTUSER@EXAMPLE.COM",
                             NormalizedUserName = "TESTUSER",
-                            PasswordHash = "AQAAAAIAAYagAAAAELPXHWGycixT2GhLBleutZJk7GruOGZn5IRZgGjheRD0HUZz/q2R+8kq6dCAPeoEBA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDzNDsqNUzz9elAdq+ay+MwoG2DSASH1haz+WvJ1PTRr0TtaFtf2i/onOBAqlchw4g==",
                             PhoneNumberConfirmed = false,
-                            RegistrationDate = new DateTimeOffset(new DateTime(2025, 8, 30, 8, 2, 12, 777, DateTimeKind.Unspecified).AddTicks(8450), new TimeSpan(0, 0, 0, 0, 0)),
-                            SecurityStamp = "ecfadd3b-9e40-40f6-8de6-0ad787dfafa9",
+                            RegistrationDate = new DateTimeOffset(new DateTime(2025, 9, 7, 22, 44, 0, 690, DateTimeKind.Unspecified).AddTicks(3540), new TimeSpan(0, 0, 0, 0, 0)),
+                            SecurityStamp = "e91c3fd3-4877-4f88-8e50-575e7c946e0f",
                             TwoFactorEnabled = false,
                             UserName = "testuser"
                         });
@@ -1877,7 +1888,7 @@ namespace PhoneCase.Data.Migrations
 
                     b.HasOne("PhoneCase.Entities.Concrete.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Product");
 

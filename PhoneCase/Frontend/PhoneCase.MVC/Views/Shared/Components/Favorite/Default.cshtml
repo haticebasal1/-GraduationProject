@@ -1,0 +1,30 @@
+@model List<PhoneCase.Shared.Dtos.FavoriteDtos.FavoriteDto>
+
+<a href="/Favorite/Index" class="position-relative nav-link">
+    <i class="ti-heart fs-5"></i>
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        @(Model?.Count ?? 0)
+    </span>
+</a>
+
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="favoriteDropdown">
+        @if (Model == null || !Model.Any())
+        {
+            <span class="dropdown-item text-muted">Henüz favoriniz yok</span>
+        }
+        else
+        {
+            @foreach (var fav in Model)
+            {
+                <a class="dropdown-item d-flex align-items-center" href="/Product/Details/@fav.ProductId">
+                    <img src="@fav.ImageUrl" alt="@fav.ProductName"
+                         style="width:30px;height:30px;margin-right:8px;" />
+                    <span>@fav.ProductName - @fav.Price ₺</span>
+                </a>
+            }
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-center fw-bold" href="/Favorite/Index">Tüm Favoriler</a>
+        }
+    </div>
+</li>

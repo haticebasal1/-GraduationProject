@@ -1,5 +1,6 @@
 using System;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PhoneCase.Data.Abstract;
 using PhoneCase.Entities.Abstract;
@@ -22,7 +23,6 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
         await _appDbContext.Set<TEntity>().AddAsync(entity);
         return entity;
     }
-
     public void BulkUpdate(IEnumerable<TEntity> entities)
     {
         _appDbContext.Set<TEntity>().UpdateRange(entities);
@@ -60,33 +60,35 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
         return await _appDbContext.Set<TEntity>().AnyAsync(predicate);
     }
 
-    public async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? predicate = null, int? top = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null, bool? isDeleted = null, params Func<IQueryable<TEntity>, IQueryable<TEntity>>[] includes)
+    public async Task<IEnumerable<TEntity>> GetAllAsync(
+    Expression<Func<TEntity, bool>>? predicate = null,
+    int? top = null,
+    Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+    bool? isDeleted = null,
+    params Func<IQueryable<TEntity>, IQueryable<TEntity>>[] includes)
     {
+        IQueryable<TEntity> query = _appDbContext.Set<TEntity>();
+
+        if (isDeleted.HasValue && typeof(ISoftDeletable).IsAssignableFrom(typeof(TEntity)))
         {
-            IQueryable<TEntity> query = _appDbContext.Set<TEntity>();
-            if (!isDeleted.HasValue)
-            {
-                query = query.IgnoreQueryFilters();
-            }
-            if (predicate is not null)
-            {
-                query = query.Where(predicate);
-            }
-            if (orderBy is not null)
-            {
-                query = orderBy(query);
-            }
-            if (top is not null)
-            {
-                query = query.Take(top.Value);
-            }
-            if (includes is not null)
-            {
-                query = includes.Aggregate(query, (current, include) => include(current));
-            }
-            return await query.ToListAsync();
+            query = query.Where(e => ((ISoftDeletable)e).IsDeleted == isDeleted.Value);
         }
+
+        if (predicate is not null)
+            query = query.Where(predicate);
+
+        if (orderBy is not null)
+            query = orderBy(query);
+
+        if (top is not null)
+            query = query.Take(top.Value);
+
+        if (includes is not null)
+            query = includes.Aggregate(query, (current, include) => include(current));
+
+        return await query.ToListAsync();
     }
+
 
     public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate, bool includeDeleted = false, params Func<IQueryable<TEntity>, IQueryable<TEntity>>[] includes)
     {
@@ -110,5 +112,10 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
     public void Update(TEntity entity)
     {
         _appDbContext.Set<TEntity>().Update(entity);
+    }
+
+    void IGenericRepository<TEntity>.BulkUDelete(IEnumerable<TEntity> entities)
+    {
+        _appDbContext.Set<TEntity>().RemoveRange(entities);
     }
 }

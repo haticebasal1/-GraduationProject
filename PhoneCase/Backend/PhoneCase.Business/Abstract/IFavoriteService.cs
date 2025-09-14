@@ -11,7 +11,7 @@ public interface IFavoriteService
     Task<ResponseDto<NoContentDto>> DeleteAsync(int id);
     Task<ResponseDto<FavoriteDto>> GetByIdAsync(int id);
     Task<ResponseDto<IEnumerable<FavoriteDto>>> GetAllAsync(
-        int userId= 0,
+        string userId=null!,
         int productId = 0,
         bool includeUser=false,
         bool includeProduct = false,

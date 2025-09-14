@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    @await Html.PartialAsync( "_HeadPartial")
+    @await RenderSectionAsync("StylesSection", false)
+</head>
+<body>
+    @await Component.InvokeAsync("NToastNotify")
+
+    <div class="wrapper">
+        @await Html.PartialAsync("_SidebarPartial")
+        <div class="main-panel">
+            @await Html.PartialAsync("_MainHeaderPartial")
+
+            <div class="container">
+                <div class="page-inner">
+                    @RenderBody()
+                </div>
+                @await Html.PartialAsync("_FooterPartial")
+            </div>
+        </div>
+    </div>
+
+    @await Html.PartialAsync("_ScriptPartial")
+    @await RenderSectionAsync("ScriptsSection", required: false)
+</body>
+</html>

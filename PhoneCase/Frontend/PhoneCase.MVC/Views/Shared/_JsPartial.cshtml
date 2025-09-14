@@ -1,0 +1,46 @@
+
+    <!-- jquery plugins here-->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- popper js -->
+    <script src="~/ui/js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="~/ui/js/bootstrap.min.js"></script>
+    <!-- easing js -->
+    <script src="~/ui/js/jquery.magnific-popup.js"></script>
+    <!-- swiper js -->
+    <script src="~/ui/js/swiper.min.js"></script>
+    <!-- swiper js -->
+    <script src="~/ui/js/masonry.pkgd.js"></script>
+    <!-- particles js -->
+    <script src="~/ui/js/owl.carousel.min.js"></script>
+    <script src="~/ui/js/jquery.nice-select.min.js"></script>
+    <!-- slick js -->
+    <script src="~/ui/js/slick.min.js"></script>
+    <script src="~/ui/js/jquery.counterup.min.js"></script>
+    <script src="~/ui/js/waypoints.min.js"></script>
+    <script src="~/ui/js/contact.js"></script>
+    <script src="~/ui/js/jquery.ajaxchimp.min.js"></script>
+    <script src="~/ui/js/jquery.form.js"></script>
+    <script src="~/ui/js/jquery.validate.min.js"></script>
+    <script src="~/ui/js/mail-script.js"></script>
+    <!-- custom js -->
+    <script src="~/ui/js/custom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+$(document).ready(function(){
+  $(".home_slider, .all_slider").owlCarousel({
+    items: 3,
+    margin: 30,
+    loop: true,
+    nav: true,
+    dots: false,
+    navText: ["<","&gt;"],
+    responsive:{
+        0:{items:1},
+        600:{items:2},
+        1000:{items:3}
+    }
+  });
+});
+</script>

@@ -1,0 +1,48 @@
+@model List<PhoneCase.Shared.Dtos.FavoriteDtos.FavoriteDto>
+
+<section class="favorites section_gap mt-5">
+    <div class="container">
+        <h2 class="mb-4 fw-bold text-center" style="padding-top: 50px;">Favorilerim</h2>
+
+        @if (Model == null || !Model.Any())
+        {
+            <div class="alert alert-info text-center">Henüz favoriniz yok.</div>
+        }
+        else
+        {
+            <div class="row justify-content-center g-4 align-items-stretch">
+                @foreach (var fav in Model)
+                {
+                    <div class="col-sm-6 col-md-4 col-lg-3 d-flex">
+                        <div class="card shadow border-0 rounded-3 h-100 w-100">
+                            <!-- Resim sabit yükseklik + object-fit -->
+                            <img src="~/ui/img/@fav.ImageUrl" alt="@fav.ProductName" class="card-img-top"
+                                style="height:220px; object-fit:contain;" />
+
+                            <!-- Kart gövdesi -->
+                            <div class="card-body d-flex flex-column text-center">
+                                <h6 class="card-title mb-2">@fav.ProductName</h6>
+                                <p class="card-text fw-bold text-primary mb-3">@fav.Price ₺</p>
+
+                                <!-- Butonlar alt tarafa sabitleniyor -->
+                                <div class="mt-auto d-flex justify-content-center gap-2">
+                                    <a href="/Product/Details/@fav.ProductId" class="btn btn-primary btn-sm px-3">
+                                        İncele
+                                    </a>
+
+
+                                    <form asp-controller="Favorite" asp-action="Remove" method="post" class="d-inline">
+                                        <input type="hidden" name="favoriteId" value="@fav.Id" />
+                                        <button type="submit" class="btn btn-danger btn-sm px-3">
+                                            <i class="fa fa-trash"></i> Kaldır
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>
