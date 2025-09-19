@@ -91,6 +91,7 @@ public static class DependencyInjection
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        services.AddScoped<IOrderRepository, OrderRepository>();
         return services;
     }
     public static IServiceCollection AddManagers(this IServiceCollection services)

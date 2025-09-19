@@ -8,6 +8,7 @@ using PhoneCase.Data.Abstract;
 using PhoneCase.Entities.Concrete;
 using PhoneCase.Shared.Dtos.CartDtos;
 using PhoneCase.Shared.Dtos.CartDtos.ChangeQuantityDto;
+using PhoneCase.Shared.Dtos.ProductDtos;
 using PhoneCase.Shared.Dtos.ResponseDtos;
 
 namespace PhoneCase.Business.Concrete;
@@ -158,26 +159,46 @@ public class CartManager : ICartService
         }
     }
 
-    public async Task<ResponseDto<CartDto>> GetCartAsync(string userId)
+public async Task<ResponseDto<CartDto>> GetCartAsync(string userId)
+{
+    try
     {
-        try
+        var cart = await _cartRepository.GetAsync(
+              predicate: x => x.UserId == userId,
+              includes: query => query.Include(x => x.CartItems).ThenInclude(y => y.Product)
+          );
+
+        if (cart is null)
         {
-            var cart = await _cartRepository.GetAsync(
-                  predicate: x => x.UserId == userId,
-                  includes: query => query.Include(x => x.CartItems).ThenInclude(y => y.Product)
-              );
-            if (cart is null)
+            return ResponseDto<CartDto>.Fail("Kullanıcıya ait sepet bulunamadı!", StatusCodes.Status404NotFound);
+        }
+
+        // AutoMapper yerine manuel map
+        var cartDto = new CartDto
+        {
+            Id = cart.Id,
+            UserId = cart.UserId,
+            CartItems = cart.CartItems.Select(ci => new CartItemDto
             {
-                return ResponseDto<CartDto>.Fail("Kullanıcıya ait sepet bulunamadığı için eklenemedi!", StatusCodes.Status404NotFound);
-            }
-            var cartDto = _mapper.Map<CartDto>(cart);
-            return ResponseDto<CartDto>.Success(cartDto, StatusCodes.Status200OK);
-        }
-        catch (Exception ex)
-        {
-            return ResponseDto<CartDto>.Fail($"Beklenmedik Hata:{ex.Message}", StatusCodes.Status500InternalServerError);
-        }
+                Id = ci.Id,
+                Quantity = ci.Quantity,
+                Product = new ProductDto
+                {
+                    Id = ci.Product!.Id,
+                    Name = ci.Product.Name,
+                    Price = ci.Product.Price,
+                     ImageUrl = ci.Product.ImageUrl
+                }
+            }).ToList()
+        };
+
+        return ResponseDto<CartDto>.Success(cartDto, StatusCodes.Status200OK);
     }
+    catch (Exception ex)
+    {
+        return ResponseDto<CartDto>.Fail($"Beklenmedik Hata:{ex.Message}", StatusCodes.Status500InternalServerError);
+    }
+}
 
     public async Task<ResponseDto<NoContentDto>> RemoveFromCartAsync(int cartItemId)
     {

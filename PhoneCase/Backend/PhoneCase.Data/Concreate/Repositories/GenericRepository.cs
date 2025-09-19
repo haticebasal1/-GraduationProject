@@ -61,17 +61,17 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
     }
 
     public async Task<IEnumerable<TEntity>> GetAllAsync(
-    Expression<Func<TEntity, bool>>? predicate = null,
-    int? top = null,
-    Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
-    bool? isDeleted = null,
-    params Func<IQueryable<TEntity>, IQueryable<TEntity>>[] includes)
+     Expression<Func<TEntity, bool>>? predicate = null,
+        int? top = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+        bool ? includeDeleted = false,
+        params Func<IQueryable<TEntity>, IQueryable<TEntity>>[] includes)
     {
         IQueryable<TEntity> query = _appDbContext.Set<TEntity>();
 
-        if (isDeleted.HasValue && typeof(ISoftDeletable).IsAssignableFrom(typeof(TEntity)))
+        if (includeDeleted==true)
         {
-            query = query.Where(e => ((ISoftDeletable)e).IsDeleted == isDeleted.Value);
+            query = query.IgnoreQueryFilters();
         }
 
         if (predicate is not null)

@@ -1,4 +1,4 @@
-@model List<PhoneCase.Shared.Dtos.FavoriteDtos.FavoriteDto>
+@model List<FavoriteDto>
 
 <section class="favorites section_gap mt-5">
     <div class="container">
@@ -11,25 +11,27 @@
         else
         {
             <div class="row justify-content-center g-4 align-items-stretch">
-                @foreach (var fav in Model)
+                @foreach (FavoriteDto fav in Model)
                 {
                     <div class="col-sm-6 col-md-4 col-lg-3 d-flex">
                         <div class="card shadow border-0 rounded-3 h-100 w-100">
-                            <!-- Resim sabit yükseklik + object-fit -->
-                            <img src="~/ui/img/@fav.ImageUrl" alt="@fav.ProductName" class="card-img-top"
-                                style="height:220px; object-fit:contain;" />
+                            <!-- Ürün resmi -->
+                            <img src="http://localhost:5289/images/@fav.ImageUrl"
+                                 alt=""
+                                 class="card-img-top"
+                                 style="height:220px; object-fit:contain;" />
 
                             <!-- Kart gövdesi -->
                             <div class="card-body d-flex flex-column text-center">
                                 <h6 class="card-title mb-2">@fav.ProductName</h6>
                                 <p class="card-text fw-bold text-primary mb-3">@fav.Price ₺</p>
 
-                                <!-- Butonlar alt tarafa sabitleniyor -->
+                                <!-- Butonlar -->
                                 <div class="mt-auto d-flex justify-content-center gap-2">
-                                    <a href="/Product/Details/@fav.ProductId" class="btn btn-primary btn-sm px-3">
+                                    <a asp-controller="Product" asp-action="Details" asp-route-id="@fav.ProductId"
+                                       class="btn btn-primary btn-sm px-3">
                                         İncele
                                     </a>
-
 
                                     <form asp-controller="Favorite" asp-action="Remove" method="post" class="d-inline">
                                         <input type="hidden" name="favoriteId" value="@fav.Id" />

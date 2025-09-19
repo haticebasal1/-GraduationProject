@@ -2,6 +2,7 @@ using System;
 using AutoMapper;
 using PhoneCase.Entities.Concrete;
 using PhoneCase.Shared.Dtos.CartDtos;
+using PhoneCase.Shared.Dtos.ProductDtos;
 
 namespace PhoneCase.Business.Mappings;
 
@@ -25,5 +26,7 @@ public class CartProfile : Profile
             .ReverseMap();
 
         CreateMap<CartCreateDto, Cart>();
+        CreateMap<Product, ProductDto>().ReverseMap();
+
     }
 }

@@ -1,1 +1,24 @@
-<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+@model int
+<li class="nav-item">
+    <a asp-area="" asp-controller="Cart" asp-action="Index"class="cart position-relative inline-block">
+        <span class="ti-bag"></span>
+      @if (Model >0)
+      {
+               <span class=" ml-1 text-danger position-absolute">@Model</span>
+      }
+        </a>
+       </li>
+
+       @section Styles{
+        <style>
+            .header_area .navbar .nav.navbar-nav.navbar-right li span {
+                line-height: normal !important;
+            }
+
+          .cart .badge{
+            height: 20px;
+            top: 20px;
+          }
+          </style>
+
+  }

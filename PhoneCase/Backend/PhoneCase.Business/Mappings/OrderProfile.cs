@@ -3,42 +3,46 @@ using AutoMapper;
 using PhoneCase.Entities.Concrete;
 using PhoneCase.Shared.Dtos.OrderDtos;
 
-namespace PhoneCase.Business.Mappings;
-
-public class OrderProfile : Profile
+namespace PhoneCase.Business.Mappings
 {
-    public OrderProfile()
+    public class OrderProfile : Profile
     {
-        var turkeyTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Turkey Standard Time");
-        CreateMap<Order, OrderDto>()
-          .ForMember(dest => dest.OrderDate,
-          opt => opt.MapFrom(src => TimeZoneInfo.ConvertTime(src.CreatedAt.UtcDateTime, turkeyTimeZone)))
-              .ForMember(dest => dest.CanceledDate,
-          opt => opt.MapFrom(src => TimeZoneInfo.ConvertTime(src.DeletedAt.UtcDateTime, turkeyTimeZone)))
-              .ForMember(dest => dest.OrderStatusUpdatedDate,
-          opt => opt.MapFrom(src => TimeZoneInfo.ConvertTime(src.UpdatedAt.UtcDateTime, turkeyTimeZone)))
-          .ForMember(
-           dest => dest.User,
-           opt => opt.MapFrom(src => src.User)
-          )
-          .ForMember(
-            dest => dest.OrderItems,
-            opt => opt.MapFrom(src => src.OrderItems)
-          )
-          .ReverseMap();
-        CreateMap<OrderNowDto, Order>()
-          .ForMember(
-            dest => dest.OrderItems,
-            opt => opt.MapFrom(src => src.OrderItems));
-        CreateMap<OrderItem, OrderItemDto>()
-          .ForMember(
-            dest => dest.ProductName,
-            opt => opt.MapFrom(src => src.Product!.Name))
-          .ForMember(
-          dest => dest.ProductImageUrl,
-          opt => opt.MapFrom(src => src.Product!.ImageUrl));
+        public OrderProfile()
+        {
+            var turkeyTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Turkey Standard Time");
 
-        CreateMap<OrderItemDto, OrderItem>();
-        CreateMap<OrderItemCreateDto, OrderItem>();
+            CreateMap<Order, OrderDto>()
+              .ForMember(dest => dest.OrderDate,
+                opt => opt.MapFrom(src => TimeZoneInfo.ConvertTime(src.CreatedAt.UtcDateTime, turkeyTimeZone)))
+              .ForMember(dest => dest.CanceledDate,
+                opt => opt.MapFrom(src => TimeZoneInfo.ConvertTime(src.DeletedAt.UtcDateTime, turkeyTimeZone)))
+              .ForMember(dest => dest.OrderStatusUpdatedDate,
+                opt => opt.MapFrom(src => TimeZoneInfo.ConvertTime(src.UpdatedAt.UtcDateTime, turkeyTimeZone)))
+              .ForMember(dest => dest.User,
+                opt => opt.MapFrom(src => src.User))
+              .ForMember(dest => dest.OrderItems,
+                opt => opt.MapFrom(src => src.OrderItems))
+              .ReverseMap();
+
+            CreateMap<OrderNowDto, Order>()
+              .ForMember(dest => dest.OrderItems,
+                opt => opt.MapFrom(src => src.OrderItems));
+
+            CreateMap<OrderItem, OrderItemDto>()
+              .ForMember(dest => dest.ProductName,
+                opt => opt.MapFrom(src => src.Product!.Name))
+              .ForMember(dest => dest.ProductImageUrl,
+                opt => opt.MapFrom(src => src.Product!.ImageUrl))
+              // ✅ Eklenen kısımlar
+              .ForMember(dest => dest.Quantity,
+                opt => opt.MapFrom(src => src.Quantity))
+              .ForMember(dest => dest.UnitPrice,
+                opt => opt.MapFrom(src => src.UnitPrice))
+              .ForMember(dest => dest.ItemAmount,
+                opt => opt.MapFrom(src => src.Quantity * src.UnitPrice));
+
+            CreateMap<OrderItemDto, OrderItem>();
+            CreateMap<OrderItemCreateDto, OrderItem>();
+        }
     }
 }

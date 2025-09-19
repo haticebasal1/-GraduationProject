@@ -15,7 +15,7 @@ public class ProductController : Controller
         return View();
     }
 
-[Authorize]
+    [Authorize]
     public async Task<IActionResult> Details(string id)
     {
         var client = new HttpClient();
@@ -35,7 +35,12 @@ public class ProductController : Controller
             if (result?.Data == null)
                 return NotFound();
 
-            return View(result.Data);
+            if (result?.Data == null)
+                return NotFound();
+
+            return View("~/Views/Product/Details.cshtml", result.Data);
+
+
         }
         catch (Exception ex)
         {

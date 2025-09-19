@@ -18,74 +18,73 @@ namespace PhoneCase.MVC.Controllers
         {
             _httpContextAccessor = httpContextAccessor;
         }
-
         [HttpGet]
         public IActionResult Login(string? returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ReturnUrl = returnUrl ?? Url.Content("~/");
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginDto loginDto, string? returnUrl)
+[HttpPost]
+public async Task<IActionResult> Login(LoginDto loginDto, string? returnUrl)
+{
+    returnUrl ??= Url.Content("~/");
+
+    if (!ModelState.IsValid)
+    {
+        ViewBag.ReturnUrl = returnUrl;
+        return View(loginDto);
+    }
+
+    using var client = new HttpClient();
+    var jsonContent = JsonConvert.SerializeObject(loginDto);
+    var stringContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+    var response = await client.PostAsync("http://localhost:5289/auths/login", stringContent);
+    var responseContent = await response.Content.ReadAsStringAsync();
+    var responseDto = JsonConvert.DeserializeObject<ResponseDto<TokenDto>>(responseContent);
+
+    if (responseDto is not null && responseDto.IsSuccessful)
+    {
+        var handler = new JwtSecurityTokenHandler();
+        var jwtToken = handler.ReadJwtToken(responseDto.Data.AccessToken);
+        var claims = new List<Claim>(jwtToken.Claims);
+
+        // 🔥 Access token ve refresh token'ı claim olarak ekledim
+        claims.Add(new Claim("access_token", responseDto.Data.AccessToken!));
+        if (!string.IsNullOrEmpty(responseDto.Data.RefreshToken))
+            claims.Add(new Claim("refresh_token", responseDto.Data.RefreshToken));
+
+        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+        var authProperties = new AuthenticationProperties
         {
-            if (!ModelState.IsValid)
+            ExpiresUtc = responseDto.Data.AccessTokenExpretionDate,
+            IsPersistent = true, // tarayıcı kapansa da cookie tutulsun istiyorsan
+            Items =
             {
-                return View(loginDto);
+                { "access_token", responseDto.Data.AccessToken },
+                { "refresh_token", responseDto.Data.RefreshToken ?? "" }
             }
+        };
 
-            using var client = new HttpClient();
-            var jsonContent = JsonConvert.SerializeObject(loginDto);
-            var stringContent = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+        await _httpContextAccessor.HttpContext!.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            claimsPrincipal,
+            authProperties
+        );
 
-            var response = await client.PostAsync("http://localhost:5289/auths/login", stringContent);
-            var responseContent = await response.Content.ReadAsStringAsync();
-            var responseDto = JsonConvert.DeserializeObject<ResponseDto<TokenDto>>(responseContent);
+        return LocalRedirect(returnUrl); // 🔥 önemli
+    }
 
-            if (responseDto is not null && responseDto.IsSuccessful)
-            {
-                // Token içinden claim’leri al
-                var handler = new JwtSecurityTokenHandler();
-                var jwtToken = handler.ReadJwtToken(responseDto.Data.AccessToken);
-                var claims = new List<Claim>();
-                claims.AddRange(jwtToken.Claims);
+    // Eğer login başarısızsa
+    ModelState.AddModelError(string.Empty, "Geçersiz kullanıcı adı veya şifre.");
+    ViewBag.ReturnUrl = returnUrl;
+    return View(loginDto);
+}
 
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
-                var authProperties = new AuthenticationProperties
-                {
-                    ExpiresUtc = responseDto.Data.AccessTokenExpretionDate,
-                    Items =
-                    {
-                        { "access_token", responseDto.Data.AccessToken },
-                        { "refresh_token", responseDto.Data.RefreshToken ?? "" }
-                    }
-                };
-
-                await _httpContextAccessor.HttpContext!.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    claimsPrincipal,
-                    authProperties
-                );
-
-                if (string.IsNullOrEmpty(returnUrl))
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    return Redirect(returnUrl);
-                }
-            }
-
-            foreach (var e in responseDto!.Errors)
-            {
-                ModelState.AddModelError("", e);
-            }
-
-            return View(loginDto);
-        }
 
         public async Task<IActionResult> Logout()
         {

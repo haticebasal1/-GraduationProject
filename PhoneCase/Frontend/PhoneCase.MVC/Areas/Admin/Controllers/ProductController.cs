@@ -108,7 +108,7 @@ public class ProductController : Controller
                 ViewBag.CategoryList = categories;
                 return View(productCreateDto);
             }
-            foreach (int id in productCreateDto.CategoryIds) // 5,7,8,11
+            foreach (int id in productCreateDto.CategoryIds)
             {
                 formData.Add(new StringContent(id.ToString()), "CategoryIds");
             }

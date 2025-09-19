@@ -46,7 +46,7 @@
                 </a>
             </li>
             <li>
-                <a asp-area="Admin" asp-controller="Product" asp-action="Trash" asp-route-isDeleted=@true>
+                <a asp-area="Admin" asp-controller="Product" asp-action="Index" asp-route-isDeleted=@true>
                     <span class="sub-item">Çöp Kutusu</span>
                 </a>
             </li>
@@ -64,7 +64,7 @@
     <div class="collapse" id="forms">
         <ul class="nav nav-collapse">
             <li>
-                <a asp-area="Admin" asp-controller="Order" asp-action="Index" asp-route-orderstatus="@null">
+                <a asp-area="Admin" asp-controller="Order" asp-action="Index" asp-route-orderstatus="@null" asp-route-isDeleted="@false">
                     <span class="sub-item">Tüm Siparişler</span>
                 </a>
             </li>
@@ -73,6 +73,12 @@
                     <span class="sub-item">Bugünki Siparişler</span>
                 </a>
             </li>
+                        <li>
+                <a asp-area="Admin" asp-controller="Order" asp-action="Index" asp-route-orderstatus="@null" asp-route-isDeleted="@true">
+                    <span class="sub-item">İptal Edilen Siparişler</span>
+                </a>
+            </li>
+            
         </ul>
     </div>
 </li>

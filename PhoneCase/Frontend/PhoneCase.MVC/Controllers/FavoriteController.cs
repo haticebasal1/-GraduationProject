@@ -25,7 +25,7 @@ namespace PhoneCase.MVC.Controllers
             var accessToken = User.FindFirst("access_token")?.Value;
 
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(accessToken))
-                return RedirectToAction("Login", "Auth");
+                return RedirectToAction("Login", "Auth", new { returnUrl = Url.Action("Index", "Favorite") });
 
             using var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
@@ -53,15 +53,25 @@ namespace PhoneCase.MVC.Controllers
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var accessToken = User.FindFirst("access_token")?.Value;
 
-            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(accessToken))
-                return RedirectToAction("Login", "Auth");
-
             using var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
-            await client.PostAsJsonAsync("http://localhost:5289/favorites/add", new { UserId = userId, ProductId = productId });
+            var dto = new FavoriteCreateDto
+            {
+                UserId = userId!,
+                ProductId = productId
+            };
 
-            return RedirectToAction("Index");
+            // ✅ Doğru endpoint: sadece /favorites
+            var response = await client.PostAsJsonAsync("http://localhost:5289/favorites", dto);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                TempData["Error"] = "Favori eklenirken bir hata oluştu.";
+                return RedirectToAction("Index", "Product");
+            }
+
+            return RedirectToAction("Index", "Favorite");
         }
 
         [HttpPost]
@@ -71,7 +81,7 @@ namespace PhoneCase.MVC.Controllers
             var accessToken = User.FindFirst("access_token")?.Value;
 
             if (string.IsNullOrEmpty(accessToken))
-                return RedirectToAction("Login", "Auth");
+                return RedirectToAction("Login", "Auth", new { returnUrl = Url.Action("Index", "Favorite") });
 
             using var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
@@ -81,7 +91,7 @@ namespace PhoneCase.MVC.Controllers
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsStringAsync();
-                // loglanabilir
+                // burada loglama yapabilirsin
             }
 
             return RedirectToAction("Index");
@@ -94,9 +104,7 @@ namespace PhoneCase.MVC.Controllers
             var response = await client.GetAsync($"http://localhost:5289/products/{id}?includeCategory=true");
 
             if (!response.IsSuccessStatusCode)
-            {
                 return NotFound();
-            }
 
             var content = await response.Content.ReadAsStringAsync();
             var product = JsonConvert.DeserializeObject<ResponseDto<ProductDto>>(content)?.Data;

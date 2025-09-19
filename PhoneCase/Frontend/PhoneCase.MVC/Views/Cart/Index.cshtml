@@ -1,0 +1,103 @@
+@model CartDto
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="mt-5 pt-5">
+    <section class="cart_area">
+        <div class="container">
+            <h1>SEPETİM</h1>
+            <div class="cart_inner">
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col">Ürün</th>
+                                <th scope="col">Fiyat</th>
+                                <th scope="col">Adet</th>
+                                <th scope="col">Toplam</th>
+                                <th scope="col">Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.CartItems != null && Model.CartItems.Any())
+                            {
+                                foreach (CartItemDto cartItem in Model.CartItems)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="media align-items-center">
+                                                <div class="d-flex">
+                                                    <!-- Ürün Resmi -->
+<img src="http://localhost:5289/images/@cartItem.Product!.ImageUrl" alt=""
+                                style="width:262.5px;height:262.5px;object-fit:cover;margin:auto;" />
+
+
+
+                                                </div>
+                                                <div class="media-body ms-3">
+                                                <a href="~/Product/Details/@cartItem.Product?.Id">
+                                                    <p class="mb-0 fw-bold">@cartItem.Product?.Name</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h5>@($"{cartItem.Product?.Price:C0}")</h5>
+                                        </td>
+                                        <td>
+                                            <div class="input-group" style="max-width:120px;">
+                                                <form asp-area="" asp-controller="Cart" asp-action="ChangeQuantity" method="post" class="d-flex">
+                                                    <input type="hidden" name="CartItemId" value="@cartItem.Id">
+                                                    <input type="number" name="Quantity" value="@cartItem.Quantity" min="1" max="10"
+                                                           class="form-control text-center" onchange="this.form.submit()">
+                                                </form>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h5>@($"{cartItem.ItemTotal:C0}")</h5>
+                                        </td>
+                                        <td>
+                                            <a href="/cart/removefromcart?cartItemId=@cartItem.Id" class="text-danger">
+                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><h5>Toplam</h5></td>
+                                    <td><h5>@($"{Model.TotalAmount:C0}")</h5></td>
+                                </tr>
+
+                                <tr class="out_button_area">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <div class="checkout_btn_inner d-flex align-items-center">
+                                            <a href="/" class="gray_btn me-2">Alışverişe Devam Et</a>
+                                            <a asp-area="" asp-controller="Order" asp-action="Checkout" class="primary-btn">Siparişi Tamamla</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="5" class="text-center">
+                                        Sepetiniz boş.
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

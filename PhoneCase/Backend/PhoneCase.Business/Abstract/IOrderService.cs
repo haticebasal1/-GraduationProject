@@ -12,4 +12,5 @@ public interface IOrderService
     Task<ResponseDto<OrderDto>> GetMyOrderAsync(int id,string userId);
     Task<ResponseDto<NoContentDto>> CancelOrderAsync(int id);
     Task<ResponseDto<IEnumerable<OrderDto>>> GetAllAsync(OrderFiltersDto orderFiltersDto);
+    ResponseDto<decimal> GetOrdersTotal(OrderFiltersDto orderFiltersDto);
 }

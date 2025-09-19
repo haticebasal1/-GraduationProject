@@ -1,16 +1,23 @@
 using System;
 using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using JsonIgnoreAttribute = Newtonsoft.Json.JsonIgnoreAttribute;
 
 namespace PhoneCase.Shared.Dtos.ResponseDtos;
 
 public class ResponseDto<T>
 {
-    public T Data { get; set; } = default!;
-    public bool IsSuccessful { get; set; }
-    public List<string> Errors { get; set; } = [];
+[JsonProperty("data")]
+public T Data { get; set; } = default!;
 
-    [JsonIgnore]
-    public int StatusCode { get; set; }
+[JsonProperty("success")]
+public bool IsSuccessful { get; set; }
+
+[JsonProperty("errors")]
+public List<string> Errors { get; set; } = [];
+
+[JsonIgnore]
+public int StatusCode { get; set; }
 
     public static ResponseDto<T> Success(T data, int statusCode)
     {
@@ -46,5 +53,9 @@ public class ResponseDto<T>
             Errors = errors,
             StatusCode = statusCode
         };
-     }
+    }
+         public static ResponseDto<decimal> Success(ResponseDto<decimal> total, int status200OK)
+    {
+        throw new NotImplementedException();
+    }
 }

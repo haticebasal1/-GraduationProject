@@ -14,6 +14,7 @@ public class AppDbContext : IdentityDbContext<User>
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
     }
+
     public DbSet<Category> Categories { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Favorite> Favorites { get; set; }
@@ -27,7 +28,7 @@ public class AppDbContext : IdentityDbContext<User>
     {
         builder.ApplyConfigurationsFromAssembly(typeof(CategoryConfig).Assembly);
 
-        #region  Users
+        #region Users
         var hasher = new PasswordHasher<User>();
         User adminMember = new User("Defne", "Yalçın", "Bakırköy", "İstanbul", Gender.Female)
         {
@@ -52,7 +53,6 @@ public class AppDbContext : IdentityDbContext<User>
         userMember.PasswordHash = hasher.HashPassword(userMember, "Qwe123.,");
 
         builder.Entity<User>().HasData(adminMember, userMember);
-
         #endregion
 
         #region Roles
@@ -80,11 +80,11 @@ public class AppDbContext : IdentityDbContext<User>
                 UserId = adminMember.Id,
                 RoleId = adminRole.Id
             },
-                        new IdentityUserRole<string>
-                        {
-                            UserId = userMember.Id,
-                            RoleId = userRole.Id
-                        }
+            new IdentityUserRole<string>
+            {
+                UserId = userMember.Id,
+                RoleId = userRole.Id
+            }
         );
         #endregion
 
@@ -95,11 +95,23 @@ public class AppDbContext : IdentityDbContext<User>
             new Cart(adminMember.Id) { Id = 1 },
             new Cart(userMember.Id) { Id = 2 }
         );
+        #endregion
 
-        #region Orders
+        #region Orders / OrderItems
         builder.Entity<Order>().HasQueryFilter(x => !x.IsDeleted);
+
+        builder.Entity<Order>()
+            .HasMany(o => o.OrderItems)
+            .WithOne(oi => oi.Order)
+            .HasForeignKey(oi => oi.OrderId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Entity<OrderItem>()
+            .HasOne(oi => oi.Product)
+            .WithMany()
+            .HasForeignKey(oi => oi.ProductId);
         #endregion
-        #endregion
+
         base.OnModelCreating(builder);
     }
 }

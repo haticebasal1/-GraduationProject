@@ -14,4 +14,5 @@ public class OrderNowDto
     public string? Address { get; set; }
     [Required(ErrorMessage = "Şehir zorunludur!")]
     public string? City { get; set; }
+    public decimal TotalOrder => OrderItems.Sum(x => x.Quantity * x.UnitPrice);
 }

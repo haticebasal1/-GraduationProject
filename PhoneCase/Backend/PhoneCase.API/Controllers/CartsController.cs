@@ -46,7 +46,7 @@ namespace PhoneCase.API.Controllers
             return CreateResult(response);
         }
         [HttpDelete("{cartItemId}")]
-        public async Task<IActionResult> ChangeQuantity(int cartItemId)
+        public async Task<IActionResult> Delete(int cartItemId)
         {
             var response = await _cartManager.RemoveFromCartAsync(cartItemId);
             return CreateResult(response);

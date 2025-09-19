@@ -1,0 +1,70 @@
+@model OrderNowDto
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+
+<!-- Start Banner Area -->
+<section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>ÖDEME</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">AnaSayfa<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="single-product.html">Ödeme</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+<!--================Checkout Area =================-->
+<section class="checkout_area section_gap">
+
+
+    <form class="row contact_form" asp-area="" asp-controller="Order" asp-action="Checkout" method="post"
+        novalidate="novalidate">
+        <div class="container">
+            <div class="billing_details">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h3>Fatura Bilgileri</h3>
+
+                        <div class="col-md-6 form-group p_star">
+                            <input type="text" class="form-control" asp-for=Address />
+                        </div>
+                        <div class="col-md-6 form-group p_star">
+                            <input type="text" class="form-control" asp-for=City />
+                        </div>
+    
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="order_box">
+                            <h2>Siparişiniz</h2>
+                            <ul class="list">
+<li><a href="#">Ürün <span>Toplam</span></a></li>
+                                @foreach (OrderItemCreateDto orderItem in Model.OrderItems)
+                                {
+                                    <li>
+                                        <a href="/product/details/@orderItem.ProductId">@orderItem.Product!.Name <span class="middle">x
+                                                @orderItem.Quantity</span>
+                                            <span class="last">@($"{(orderItem.Quantity * orderItem.Product.Price):C0}")</span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                            <ul class="list list_2">
+
+                                <li><a href="#">Toplam <span>@($"{Model.TotalOrder:C0}")</span></a></li>
+                            </ul>
+
+                            <button type="submit" class="primary-btn">Ödeme Yap</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

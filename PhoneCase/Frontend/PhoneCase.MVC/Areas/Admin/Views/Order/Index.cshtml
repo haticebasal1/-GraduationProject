@@ -6,53 +6,67 @@
 <div class="page-header">
     <div class="w-100 d-flex align-items-center justify-content-between">
         <h3 id="head_title" class="fw-bold mb-3">Siparişler</h3>
+         <div>
+            <a asp-area="Admin" asp-controller="Order" asp-action="Index" asp-route-orderStatus=@null 
+            class="btn btn-warning">Tümü</a>
+           @foreach(SelectListItem orderStatus in ViewBag.OrderStatusList)
+           {
+            <a asp-area="Admin" asp-controller="Order" asp-action="Index" asp-route-orderstatus="@orderStatus.Value" 
+            asp-route-isDeleted=@false
+             class="btn @(orderStatus.Selected ? "btn-success": "btn-primary")">@orderStatus.Text</a>
+           }
+         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                @if(Model is not null)
+                @if (Model is not null)
                 {
-                <div class="table-responsive">
-                    <table id="entity-tables" class="display table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th width="30">Id</th>
-                                <th width="50">Tarih</th>
-                                <th>Müşteri</th>
-                                <th width="50">Durum</th>
-                                <th>Tutar</th>
-                                <th width="175">İşlemler</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            @foreach (OrderDto order in Model)
-                            {
+                    <div class="table-responsive">
+                        <table id="entity-tables" class="display table table-striped table-hover">
+                            <thead>
                                 <tr>
-                                    <td>@order.Id</td>
-                                    <td>
-                                    @order.OrderDate
-                                    </td>
-                                    <td>@order.User!.FirstName @order.User!.LastName</td>
-                                    <td>
-                                    <select class="form-select order-status-select" asp-items=@(ViewBag.GetOrderStatusesSelectList(order.OrderStatus))"></select>
-                                    </td>
-                                    <td>
-                                    @($"{order.TotalAmount:C2}")
-                                    </td>
-                                    <td>
-                                        butonlar
-                                    </td>
+                                    <th width="30">Id</th>
+                                    <th width="130">Tarih</th>
+                                    <th>Müşteri</th>
+                                    <th width="150">Durum</th>
+                                    <th width="100">Tutar</th>
+                                    <th width="125">İşlemler</th>
                                 </tr>
-                            }
+                            </thead>
+                            <tbody>
 
-                        </tbody>
-                    </table>
-                </div>
+                                @foreach (OrderDto order in Model)
+                                {
+                                    <tr>
+                                        <td>@order.Id</td>
+                                        <td>
+                                            @order.OrderDate
+                                        </td>
+                                        <td>@order.User!.FirstName @order.User!.LastName</td>
+                                        <td>
+                                            <select data-order-id="@order.Id" class="form-select order-status-select"
+                                                asp-items=@(ViewBag.GetOrderStatusesSelectList(order.OrderStatus))></select>
+                                        </td>
+                                        <td>
+                                            @($"{order.TotalAmount:C2}")
+                                        </td>
+                                        <td class="text-end">
+                                            <a class="btn btn-warning btn-sm" asp-area="Admin" asp-controller="Order" asp-action="Details" asp-route-id="@order.Id">Detay</a>
+                                            <a class="btn btn-danger btn-sm" asp-area="Admin" asp-controller="Order" asp-action="Cancel" asp-route-id="@order.Id">İptal</a>
+                                        </td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
                 }
-                else{
+                else
+                {
                     <div class="alert alert-warning mb-0">
                         Hiç kategori bulunamadı!
                     </div>
@@ -64,10 +78,46 @@
 </div>
 
 
-<div >
+<div>
 
 </div>
 @section ScriptsSection {
 
     @await Html.PartialAsync("_DatatablesPartial")
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const orderStatusSelectList = document.getElementsByClassName("order-status-select");
+        for(let i = 0; i<orderStatusSelectList.length; i++)
+        {
+            orderStatusSelectList[i].addEventListener('change',function(){
+               const orderId = $(this).data("order-id")
+                const newStatus = $(this).val();
+
+                $.ajax({
+                    url: '/admin/order/changeorderstatus',
+                    type: 'PUT',
+                    data: {
+                        orderId: orderId,
+                        orderStatus: newStatus
+                    },
+                    success: function(response){
+                    console.log(response);
+                    if(response.isSuccessful){
+                        //Başarılı olduğunda yapılması istenen DOM manipülasyonları burada yapılabilir.
+                       Swal.fire({
+                       icon: "success",
+                       title: "Sipariş Durumu Güncellendi!",
+                       showConfirmButton: true,
+                       timer: 1500
+                    });
+                    }
+                    },
+                     error: function(e){
+                     console.log(e)
+                    }
+                });
+            });
+            
+        }
+    </script>
 }

@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using PhoneCase.MVC.ViewModels;
 using PhoneCase.Shared.Dtos.FavoriteDtos;
 using PhoneCase.Shared.Dtos.ResponseDtos;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 
 namespace PhoneCase.MVC.ViewComponents
 {
@@ -16,28 +16,31 @@ namespace PhoneCase.MVC.ViewComponents
             _client = new HttpClient { BaseAddress = new Uri("http://localhost:5289/") };
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string userId)
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            // Kullanıcının token'ını cookie’den al
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var token = HttpContext.User.FindFirst("access_token")?.Value;
+
+            // Giriş yoksa boş liste döndür (view bu listeyi kullanır)
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
             {
-                return View(new List<FavoriteDto>()); // giriş yoksa 0 göster
+                return View(new List<FavoriteDto>());
             }
 
-            _client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", token);
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             var response = await _client.GetAsync($"favorites/getall/all?userId={userId}&includeProduct=true");
+
             if (!response.IsSuccessStatusCode)
             {
                 return View(new List<FavoriteDto>());
             }
 
             var responseContent = await response.Content.ReadAsStringAsync();
-            var result = JsonConvert.DeserializeObject<ResponseViewModel<List<FavoriteDto>>>(responseContent);
+            var result = JsonConvert.DeserializeObject<ResponseDto<List<FavoriteDto>>>(responseContent);
 
-            return View(result?.Data ?? new List<FavoriteDto>());
+            var list = result?.Data ?? new List<FavoriteDto>();
+            return View(list);
         }
     }
 }
